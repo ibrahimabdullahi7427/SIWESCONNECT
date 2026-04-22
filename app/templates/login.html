@@ -1,0 +1,28 @@
+{% extends "base.html" %}
+{% block title %}Login - SIWESConnect{% endblock %}
+
+{% block content %}
+<div class="page-wrapper" style="max-width: 460px;">
+    <div style="text-align: center; margin-bottom: 2rem;">
+        <h2 style="font-family: 'Playfair Display', serif; font-size: 2rem;">Welcome Back</h2>
+        <p style="color: #6b7a72;">Login to view your recommendations</p>
+    </div>
+    <div class="card p-4">
+        <form method="POST" autocomplete="off">
+            {{ form.hidden_tag() }}
+            <div class="mb-3">
+                {{ form.email.label(class="form-label") }}
+                {{ form.email(class="form-control", placeholder="your@email.com") }}
+            </div>
+            <div class="mb-4">
+                {{ form.password.label(class="form-label") }}
+                {{ form.password(class="form-control", placeholder="Your password") }}
+            </div>
+            {{ form.submit(class="btn btn-primary w-100", value="Login") }}
+        </form>
+        <p style="text-align: center; margin-top: 1rem; font-size: 0.9rem; color: #6b7a72;">
+            Don't have an account? <a href="{{ url_for('main.register') }}" style="color: #1a6b3c; font-weight: 600;">Register here</a>
+        </p>
+    </div>
+</div>
+{% endblock %}s

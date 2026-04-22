@@ -1,0 +1,62 @@
+{% extends "base.html" %}
+{% block title %}SIWESConnect - Find Your SIWES Placement or Graduate Job{% endblock %}
+
+{% block content %}
+<div style="background: linear-gradient(135deg, #0f1f17 0%, #1a6b3c 100%); padding: 5rem 1.5rem; text-align: center; color: white;">
+    <div style="max-width: 700px; margin: 0 auto;">
+        <p style="font-size: 0.85rem; letter-spacing: 3px; text-transform: uppercase; color: #a8d5b5; margin-bottom: 1rem;">AI-Powered Recommendation System</p>
+        <h1 style="font-family: 'Playfair Display', serif; font-size: 3.2rem; line-height: 1.2; margin-bottom: 1.5rem;">
+            Find Your Perfect <br><span style="color: #2d9b5a;">SIWES Placement</span> or <br>Graduate Job
+        </h1>
+        <p style="font-size: 1.1rem; color: rgba(255,255,255,0.8); margin-bottom: 2.5rem; line-height: 1.7;">
+            SIWESConnect uses artificial intelligence to match Nigerian university students with relevant organisations based on their course of study and location. No more guessing. No more cold calls.
+        </p>
+        <div style="display: flex; gap: 1rem; justify-content: center; flex-wrap: wrap;">
+            <a href="{{ url_for('main.register') }}" style="background: #2d9b5a; color: white; padding: 0.85rem 2.5rem; border-radius: 8px; text-decoration: none; font-weight: 700; font-size: 1rem; transition: background 0.2s;">Get Started Free</a>
+            <a href="{{ url_for('main.login') }}" style="background: transparent; color: white; padding: 0.85rem 2.5rem; border-radius: 8px; text-decoration: none; font-weight: 600; font-size: 1rem; border: 2px solid rgba(255,255,255,0.4);">Login</a>
+        </div>
+    </div>
+</div>
+
+<div class="page-wrapper">
+    <div style="text-align: center; margin-bottom: 3rem;">
+        <h2 style="font-family: 'Playfair Display', serif; font-size: 2rem; margin-bottom: 0.75rem;">How It Works</h2>
+        <p style="color: #6b7a72; font-size: 1rem;">Three simple steps to find your ideal placement or job</p>
+    </div>
+    <div class="row g-4 mb-5">
+        <div class="col-md-4">
+            <div class="card p-4 text-center h-100">
+                <div style="width: 56px; height: 56px; background: #e8f5ee; border-radius: 50%; display: flex; align-items: center; justify-content: center; margin: 0 auto 1rem;">
+                    <i class="bi bi-person-plus" style="font-size: 1.5rem; color: #1a6b3c;"></i>
+                </div>
+                <h5 style="font-weight: 700; margin-bottom: 0.5rem;">1. Create Account</h5>
+                <p style="color: #6b7a72; font-size: 0.9rem;">Register with your course of study, state, and what you are looking for — SIWES placement or graduate job.</p>
+            </div>
+        </div>
+        <div class="col-md-4">
+            <div class="card p-4 text-center h-100">
+                <div style="width: 56px; height: 56px; background: #e8f5ee; border-radius: 50%; display: flex; align-items: center; justify-content: center; margin: 0 auto 1rem;">
+                    <i class="bi bi-cpu" style="font-size: 1.5rem; color: #1a6b3c;"></i>
+                </div>
+                <h5 style="font-weight: 700; margin-bottom: 0.5rem;">2. AI Matching</h5>
+                <p style="color: #6b7a72; font-size: 0.9rem;">Our AI engine analyses your profile using TF-IDF and cosine similarity to find the most relevant organisations for you.</p>
+            </div>
+        </div>
+        <div class="col-md-4">
+            <div class="card p-4 text-center h-100">
+                <div style="width: 56px; height: 56px; background: #e8f5ee; border-radius: 50%; display: flex; align-items: center; justify-content: center; margin: 0 auto 1rem;">
+                    <i class="bi bi-building-check" style="font-size: 1.5rem; color: #1a6b3c;"></i>
+                </div>
+                <h5 style="font-weight: 700; margin-bottom: 0.5rem;">3. Get Recommendations</h5>
+                <p style="color: #6b7a72; font-size: 0.9rem;">Receive a ranked list of organisations matched to your course and location, with direct links to their websites.</p>
+            </div>
+        </div>
+    </div>
+
+    <div style="background: linear-gradient(135deg, #0f1f17, #1a6b3c); border-radius: 16px; padding: 3rem 2rem; text-align: center; color: white;">
+        <h3 style="font-family: 'Playfair Display', serif; font-size: 1.8rem; margin-bottom: 1rem;">Ready to find your placement?</h3>
+        <p style="color: rgba(255,255,255,0.75); margin-bottom: 1.5rem;">Join students from the University of Abuja already using SIWESConnect</p>
+        <a href="{{ url_for('main.register') }}" style="background: #2d9b5a; color: white; padding: 0.75rem 2rem; border-radius: 8px; text-decoration: none; font-weight: 700;">Create Free Account</a>
+    </div>
+</div>
+{% endblock %}
