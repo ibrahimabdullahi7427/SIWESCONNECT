@@ -65,3 +65,17 @@ def dashboard():
         top_n=70
     )
     return render_template('dashboard.html', recommendations=recommendations)
+
+
+@main.route('/seed-database-now-siwesconnect')
+def seed_db():
+    from app.models import Organisation
+    import sys
+    sys.path.insert(0, '.')
+    from seed import organisations
+    Organisation.query.delete()
+    db.session.commit()
+    for org in organisations:
+        db.session.add(org)
+    db.session.commit()
+    return f"Successfully seeded {len(organisations)} organisations."
