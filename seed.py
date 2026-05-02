@@ -1,7 +1,5 @@
-from app import create_app
-from app.models import db, Organisation
+from app.models import Organisation
 
-app = create_app()
 
 organisations = [
     # ─── ICT & SOFTWARE ───────────────────────────────────────────────────
