@@ -79,3 +79,8 @@ def seed_db():
         db.session.add(org)
     db.session.commit()
     return f"Successfully seeded {len(organisations)} organisations."
+@main.route('/debug')
+def debug():
+    from app.models import Organisation
+    orgs = Organisation.query.all()
+    return f"Total orgs: {len(orgs)} | First org state: {orgs[0].state if orgs else 'none'} | First org type: {orgs[0].opportunity_type if orgs else 'none'}"
