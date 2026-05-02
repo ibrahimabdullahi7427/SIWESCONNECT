@@ -64,24 +64,48 @@ def dashboard():
         opportunity_type=current_user.opportunity_type,
         top_n=70
     )
+    
+    # Debug info - will show in Render Logs
+    print(f"DEBUG - User: {current_user.course} | State: {current_user.state} | Type: {current_user.opportunity_type} | Recommendations found: {len(recommendations)}")
+    
     return render_template('dashboard.html', recommendations=recommendations)
 
 
+# ==================== SEED ROUTE (Improved) ====================
 @main.route('/seed-database-now-siwesconnect')
 def seed_db():
-    from app.models import Organisation
-    import sys
-    sys.path.insert(0, '.')
-    from seed import organisations
-    Organisation.query.delete()
-    db.session.commit()
-    for org in organisations:
-        db.session.add(org)
-    db.session.commit()
-    return f"Successfully seeded {len(organisations)} organisations."
+    try:
+        from app.models import Organisation
+        from seed import organisations  # Make sure seed.py exists
+        
+        Organisation.query.delete()
+        db.session.commit()
+        
+        count = 0
+        for org in organisations:
+            db.session.add(org)
+            count += 1
+        
+        db.session.commit()
+        return f"✅ SUCCESS! Seeded {count} organisations. Total now: {Organisation.query.count()}"
+    
+    except Exception as e:
+        db.session.rollback()
+        import traceback
+        error_msg = traceback.format_exc()
+        print("SEED ERROR:", error_msg)
+        return f"❌ SEED ERROR: {str(e)}<br><pre>{error_msg}</pre>"
+
 
 @main.route('/debug')
 def debug():
     from app.models import Organisation
     orgs = Organisation.query.all()
-    return f"Total orgs: {len(orgs)} | First org state: {orgs[0].state if orgs else 'none'} | First org type: {orgs[0].opportunity_type if orgs else 'none'}"
+    count = len(orgs)
+    first = orgs[0] if orgs else None
+    return f"""
+    Total Organizations: {count}<br><br>
+    First Org: {first.name if first else 'None'}<br>
+    State: {first.state if first else 'None'}<br>
+    Type: {first.opportunity_type if first else 'None'}
+    """
