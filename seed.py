@@ -233,10 +233,3 @@ organisations = [
     Organisation(name='Templars Law Firm', sector='Legal Services', state='FCT', description='Leading full service Nigerian law firm providing corporate commercial dispute resolution energy and natural resources and regulatory legal services to major clients in Abuja', relevant_courses='Law', opportunity_type='Graduate Job', website='https://templars-law.com'),
 ]
 
-with app.app_context():
-    Organisation.query.delete()
-    db.session.commit()
-    for org in organisations:
-        db.session.add(org)
-    db.session.commit()
-    print(f"Successfully seeded {len(organisations)} FCT organisations.")
